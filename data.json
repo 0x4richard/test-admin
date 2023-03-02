@@ -1,0 +1,31 @@
+{
+  "events": {
+    "has_more": true,
+    "data": [
+      {
+        "aggregate_id": "agg_123",
+        "parent_id": "evt_123",
+        "event": "payment.created",
+        "version": 1,
+        "created_at": 1452639600,
+        "payload": {
+          "amount": 1000,
+          "currency": "usd",
+          "source": "tok_123"
+        }
+      },
+      {
+        "aggregate_id": "agg_456",
+        "parent_id": "evt_456",
+        "event": "payment.succeeded",
+        "version": 2,
+        "created_at": 1452639601,
+        "payload": {
+          "amount": 1000,
+          "currency": "usd1",
+          "source": "tok_1231"
+        }
+      }
+    ]
+  }
+}
