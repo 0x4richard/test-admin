@@ -1,4 +1,14 @@
 {
+  "users": [
+    {
+      "id": "usr_123",
+      "email": "123@abc.com"
+    },
+    {
+      "id": "usr_456",
+      "email": "456@abc.com"
+    }
+  ],
   "events": {
     "has_more": true,
     "data": [

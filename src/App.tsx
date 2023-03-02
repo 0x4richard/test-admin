@@ -1,5 +1,6 @@
 import { Admin, fetchUtils, ListGuesser, Resource } from "react-admin"
 import jsonServerProvider from "ra-data-json-server"
+import { EventList } from "./components/EventList";
 
 type FetchJsonType = ReturnType<typeof fetchUtils.fetchJson>
 
@@ -19,7 +20,8 @@ const dataProvider = jsonServerProvider("http://localhost:3000/api/v1", httpClie
 const App: React.FunctionComponent = () => {
   return (
     <Admin dataProvider={dataProvider} title="Admin Example - 0x" >
-      <Resource name="events" list={ListGuesser} />
+      <Resource name="users" list={ListGuesser} />
+      <Resource name="events" list={EventList} />
     </Admin>
   )
 }
