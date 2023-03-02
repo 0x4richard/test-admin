@@ -1,33 +1,26 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import { Admin, fetchUtils, ListGuesser, Resource } from "react-admin"
+import jsonServerProvider from "ra-data-json-server"
 
-function App() {
-  const [count, setCount] = useState(0)
+type FetchJsonType = ReturnType<typeof fetchUtils.fetchJson>
 
+const httpClient = (url: string, options?: fetchUtils.Options | undefined): FetchJsonType => {
+  const headers = new Headers();
+  if (!options?.headers) {
+    headers.set('Content-Type', 'application/json')
+  }
+  // add your own headers here
+  headers.set('X-Custom-Header', 'richard.hao')
+
+  return fetchUtils.fetchJson(url, options)
+};
+
+const dataProvider = jsonServerProvider("http://localhost:3000/api/v1", httpClient)
+
+const App: React.FunctionComponent = () => {
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
+    <Admin dataProvider={dataProvider} title="Admin Example - 0x" >
+      <Resource name="events" list={ListGuesser} />
+    </Admin>
   )
 }
 
