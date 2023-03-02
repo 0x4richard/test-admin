@@ -8,6 +8,7 @@ export const EventList: React.FunctionComponent = () => (
         <TextField source="parent_id" />
         <TextField source="version" />
         <TextField source="event" />
+        <TextField source="payload" />
         <DateField source="created_at" />
       </Datagrid>
     </>
