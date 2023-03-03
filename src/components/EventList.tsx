@@ -1,7 +1,11 @@
-import { Datagrid, DateField, List, TextField } from "react-admin";
+import { Datagrid, DateField, List, TextField, TextInput } from "react-admin";
+
+const filters = [
+  <TextInput label="Aggregate ID" source="aggregate_id" />,
+]
 
 export const EventList: React.FunctionComponent = () => (
-  <List>
+  <List filters={filters}>
     <>
       <Datagrid>
         <TextField source="aggregate_id" />

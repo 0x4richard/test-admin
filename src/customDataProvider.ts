@@ -18,7 +18,7 @@ const customDataProvider: Partial<DataProvider> = {
   getList: async (resource: string, params: GetListParams) => {
     console.log('getList', resource, params)
 
-    const query = new URLSearchParams({ test: "test" })
+    const query = new URLSearchParams({ test: "test", ...params.filter })
     const url = `http://localhost:3000/api/v1/${resource}?${query}`
 
     const response = await fetch(url, { headers: { Accept: 'application/json' } })
