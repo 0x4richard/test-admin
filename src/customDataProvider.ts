@@ -14,7 +14,7 @@ interface ResponseData {
   data: Data[]
 }
 
-const customDataProvider: Partial<DataProvider> = {
+const customDataProvider = {
   getList: async (resource: string, params: GetListParams) => {
     console.log('getList', resource, params)
 
@@ -32,12 +32,12 @@ const customDataProvider: Partial<DataProvider> = {
 
     return {
       total: 1000,
-      data: data.data.map((item) => ({
+      data: data.data.map((item: Data) => ({
         id: `id-${item.aggregate_id}-${item.version}-${item.created_at}`,
         ...item,
       }))
     } as GetListResult
   }
-}
+} satisfies Partial<DataProvider>
 
 export default customDataProvider
