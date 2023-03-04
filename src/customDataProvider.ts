@@ -22,6 +22,12 @@ const customDataProvider: Partial<DataProvider> = {
     const url = `http://localhost:3000/api/v1/${resource}?${query}`
 
     const response = await fetch(url, { headers: { Accept: 'application/json' } })
+
+    if (!response.ok) {
+      console.log(response)
+      throw new Error(response.statusText)
+    }
+
     const data = (await response.json()) as ResponseData
 
     return {
